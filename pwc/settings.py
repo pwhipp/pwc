@@ -165,14 +165,14 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 
 DATABASES = {
     "default": {
-        # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
+        # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "pwc",
         # Not used with sqlite3.
-        "USER": "",
+        "USER": "pwc",
         # Not used with sqlite3.
-        "PASSWORD": "",
+        "PASSWORD": "Ong2yeew",
         # Set to empty string for localhost. Not used with sqlite3.
         "HOST": "",
         # Set to empty string for default. Not used with sqlite3.
@@ -249,6 +249,7 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
+    "invoicing"
     #"mezzanine.accounts",
     #"mezzanine.mobile",
 )
@@ -336,6 +337,8 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 #     "NEVERCACHE_KEY": NEVERCACHE_KEY,
 # }
 
+from decimal import Decimal
+TAX_RATE = Decimal(0.1)
 
 ##################
 # LOCAL SETTINGS #

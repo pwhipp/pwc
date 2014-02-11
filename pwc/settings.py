@@ -249,7 +249,7 @@ INSTALLED_APPS = (
     "mezzanine.forms",
     "mezzanine.pages",
     "mezzanine.galleries",
-    "mezzanine.twitter",
+    #"mezzanine.twitter",
     "invoicing"
     #"mezzanine.accounts",
     #"mezzanine.mobile",
@@ -341,6 +341,8 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 from decimal import Decimal
 TAX_RATE = Decimal(0.1)
 
+SITE_TITLE = "Cloud Engineering"
+SITE_TAGLINE = "from Paul Whipp Consulting"
 ##################
 # LOCAL SETTINGS #
 ##################

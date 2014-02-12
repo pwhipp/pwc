@@ -250,8 +250,8 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     #"mezzanine.twitter",
-    "invoicing"
-    #"mezzanine.accounts",
+    "invoicing",
+    "mezzanine.accounts",
     #"mezzanine.mobile",
 )
 
@@ -342,7 +342,9 @@ from decimal import Decimal
 TAX_RATE = Decimal(0.1)
 
 SITE_TITLE = "Cloud Engineering"
-SITE_TAGLINE = "from Paul Whipp Consulting"
+SITE_TAGLINE = ""
+ACCOUNTS_VERIFICATION_REQUIRED = True
+
 ##################
 # LOCAL SETTINGS #
 ##################

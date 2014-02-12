@@ -1,0 +1,26 @@
+/* ==========================================================================
+   Insert Your Custom Styles Below. All styles located in this file will
+   override existing main.css stylesheets.
+   ========================================================================== */
+
+.site-info a {
+    text-decoration: underline;}
+
+.navbar-form {
+    margin-top: 30px;}
+
+.navbar-brand {
+    margin-top: 30px;}
+
+.navbar-text {
+    margin-top: 30px;}
+
+h1, h2, h3 {
+    color: #515151;}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background-image: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;}
+
+

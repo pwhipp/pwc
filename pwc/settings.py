@@ -344,7 +344,7 @@ TAX_RATE = Decimal(0.1)
 SITE_TITLE = "Cloud Engineering"
 SITE_TAGLINE = ""
 ACCOUNTS_VERIFICATION_REQUIRED = True
-
+COMMENTS_USE_RATINGS = False
 ##################
 # LOCAL SETTINGS #
 ##################

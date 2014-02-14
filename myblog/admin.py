@@ -7,7 +7,7 @@ from hitcount.models import HitCount
 
 
 class MyBlogPostAdmin(BlogPostAdmin):
-    list_display = ["title", "user", "status", "hits", "admin_link"]
+    list_display = ["created", "title", "status", "hits", "admin_link"]
 
     @staticmethod
     def hits(blog_post):

@@ -1,3 +1,4 @@
 .project
 invoicing
-.idea
+.idea/
+__pycache__/

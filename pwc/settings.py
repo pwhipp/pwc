@@ -245,6 +245,8 @@ INSTALLED_APPS = (
     "mezzanine.conf",
     "mezzanine.core",
     "mezzanine.generic",
+    "hitcount",
+    "myblog",
     "mezzanine.blog",
     "mezzanine.forms",
     "mezzanine.pages",
@@ -345,6 +347,11 @@ SITE_TITLE = "Cloud Engineering"
 SITE_TAGLINE = ""
 ACCOUNTS_VERIFICATION_REQUIRED = True
 COMMENTS_USE_RATINGS = False
+
+HITCOUNT_KEEP_HIT_ACTIVE = {'days': 0}
+HITCOUNT_HITS_PER_IP_LIMIT = 0
+HITCOUNT_EXCLUDE_USER_GROUP = ()
+
 ##################
 # LOCAL SETTINGS #
 ##################

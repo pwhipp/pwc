@@ -1,5 +1,5 @@
 {% extends "blog/blog_post_list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags hitcount_tags %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -14,6 +14,14 @@
 
 {% block title %}
 {% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript"><!--
+        $(document).ready(function() {
+            {% get_hit_count_javascript for blog_post %}
+        });
+    --></script>
 {% endblock %}
 
 {% block breadcrumb_menu %}

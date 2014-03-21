@@ -6,8 +6,40 @@
 .site-info a {
     text-decoration: underline;}
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     color: #515151;}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 34px;
+  letter-spacing: -2px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 29px;
+  line-height: 32px;
+  letter-spacing: -2px;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 26px;
+  line-height: 38px;
+  letter-spacing: -2px;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 23px;
+  line-height: 35px;
+  letter-spacing: -0.7px;
+  font-weight: 300;
+}
 
 .navbar-inverse .navbar-nav > .active > a {
     background-image: none;

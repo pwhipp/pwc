@@ -62,14 +62,6 @@
     {% endif %}{% endif %}{% endif %}{% endif %}
     {% endblock %}
     </p>
-{% else %}
-    {% if page %}
-    {% block blog_post_list_pagecontent %}
-    {% editable page.richtextpage.content %}
-    {{ page.richtextpage.content|richtext_filters|safe }}
-    {% endeditable %}
-    {% endblock %}
-    {% endif %}
 {% endif %}
 
 {% for blog_post in blog_posts.object_list %}

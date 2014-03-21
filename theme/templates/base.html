@@ -120,35 +120,31 @@
                         {% include "accounts/includes/user_panel.html" %}
                     </div>
                 </div>
-                <div class="panel-group">
+                <div class="panel-group" id="accordion">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-target="#recentWeb" href="#recentWeb">
+                            <h4 class="panel-title collapser" data-toggle="collapse" data-target="#recentWeb" data-parent="#accordion">
                                     Recent Web
-                                </a>
                             </h4>
                         </div>
                         <div id="recentWeb" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 {% for post in web_development_posts %}
-                                    <p>{{ post.title }}</p>
+                                    <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-target="#recentTheories" href="#recentTheories">
+                            <h4 class="panel-title collapser" data-toggle="collapse" data-target="#recentTheories" data-parent="#accordion">
                                     Recent Theories
-                                </a>
                             </h4>
                         </div>
                         <div id="recentTheories" class="panel-collapse collapse">
                             <div class="panel-body">
                                 {% for post in whippys_theories_posts %}
-                                    <p>{{ post.title }}</p>
+                                    <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
                                 {% endfor %}
                             </div>
                         </div>

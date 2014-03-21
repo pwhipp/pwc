@@ -1,0 +1,91 @@
+{% load blog_tags keyword_tags i18n future %}
+<div class="panel-group" id="accordion">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title collapser" data-toggle="collapse" data-target="#recentPosts" data-parent="#accordion">
+                    {% trans "Recent Posts" %}
+            </h4>
+        </div>
+        <div id="recentPosts" class="panel-collapse collapse in">
+            <div class="panel-body">
+                {% blog_recent_posts 5 as recent_posts %}
+                {% for recent_post in recent_posts %}
+                    <p>
+                        <a href="{{ recent_post.get_absolute_url }}">
+                            {{ recent_post.title }}
+                        </a>
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title collapser" data-toggle="collapse" data-target="#categories" data-parent="#accordion">
+                    {% trans "Categories" %}
+            </h4>
+        </div>
+        <div id="categories" class="panel-collapse collapse">
+            <div class="panel-body">
+                {% blog_categories as categories %}
+                {% for category in categories %}
+                    <p>
+                        <a href="{% url "blog_post_list_category" category.slug %}">
+                            {{ category }}
+                        </a> ({{ category.post_count }})
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title collapser" data-toggle="collapse" data-target="#feeds" data-parent="#accordion">
+                    {% trans "Feeds" %}
+            </h4>
+        </div>
+        <div id="feeds" class="panel-collapse collapse">
+            <div class="panel-body">
+                {% if tag %}
+                    <a href="{% url "blog_post_feed_tag" tag.slug "rss" %}">{% trans "RSS" %}</a> /
+                    <a href="{% url "blog_post_feed_tag" tag.slug "atom" %}">{% trans "Atom" %}</a>
+                {% endif %}
+                {% if category %}
+                    <a href="{% url "blog_post_feed_category" category.slug "rss" %}">{% trans "RSS" %}</a> /
+                    <a href="{% url "blog_post_feed_category" category.slug "atom" %}">{% trans "Atom" %}</a>
+                {% endif %}
+                {% if author %}
+                    <a href="{% url "blog_post_feed_author" author.username "rss" %}">{% trans "RSS" %}</a> /
+                    <a href="{% url "blog_post_feed_author" author.username "atom" %}">{% trans "Atom" %}</a>
+                {% endif %}
+                {% if not tag and not category and not author %}
+                    <a href="{% url "blog_post_feed" "rss" %}">{% trans "RSS" %}</a> /
+                    <a href="{% url "blog_post_feed" "atom" %}">{% trans "Atom" %}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title collapser" data-toggle="collapse" data-target="#archive" data-parent="#accordion">
+                    {% trans "Archive" %}
+            </h4>
+        </div>
+        <div id="archive" class="panel-collapse collapse">
+            <div class="panel-body">
+                {% blog_months as months %}
+                {% for month in months %}
+                    {% ifchanged month.date.year %}
+                        <h6>{{ month.date.year }}</h6>
+                        <ul class="list-unstyled">
+                    {% endifchanged %}
+                    <p><a href="{% url "blog_post_list_month" year=month.date.year month=month.date.month %}">
+                        {{ month.date|date:"F" }}
+                    </a> ({{ month.post_count }})
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+

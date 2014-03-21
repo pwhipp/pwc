@@ -46,4 +46,15 @@ h4 {
     -webkit-box-shadow: none;
     box-shadow: none;}
 
+/* Set up cursor and put the arrow after collapsable panel headings */
+.collapser {
+    cursor: pointer;}
 
+.collapser:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: right;
+    color: grey;}
+
+.collapser.collapsed:after {
+    content: "\e080";}

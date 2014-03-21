@@ -71,14 +71,8 @@
                 {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}
                     </p>{% endif %}
             </div>
-            <div class="col-md-8 navbar-collapse collapse">
+            <div class="col-md-10 navbar-collapse collapse">
                 {% page_menu "pages/menus/dropdown.html" %}
-            </div>
-            <div style="margin-top: 30px;" class="col-md-1 navbar-collapse collapse">
-                {% include "accounts/includes/user_panel.html" %}
-            </div>
-            <div style="margin-top: 20px;" class="col-md-1 navbar-collapse collapse">
-                {% search_form %}
             </div>
         </div>
     </div>
@@ -112,33 +106,56 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-3 left">
-            {% blog_recent_posts limit=5 category="web-development" as web_development_posts %}
-            {% blog_recent_posts limit=5 category="whippys-theories" as whippys_theories_posts %}
-            {% block left_panel %}
-                <div class="panel panel-info">
-                    <div class="panel-heading">Recent Web</div>
-                        <div class="panel-body">
-                        {% for post in web_development_posts %}
-                            <p>{{ post.title }}</p>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="panel panel-info">
-                    <div class="panel-heading">Recent Theories</div>
-                        <div class="panel-body">
-                        {% for post in whippys_theories_posts %}
-                            <p>{{ post.title }}</p>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endblock %}
-        </div>
-
         <div class="col-md-9 middle">
             {% block main %}{% endblock %}
         </div>
 
+        <div class="col-md-3 right">
+            {% blog_recent_posts limit=5 category="web-development" as web_development_posts %}
+            {% blog_recent_posts limit=5 category="whippys-theories" as whippys_theories_posts %}
+            {% block right_panel %}
+                {% search_form %}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% include "accounts/includes/user_panel.html" %}
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-target="#recentWeb" href="#recentWeb">
+                                    Recent Web
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="recentWeb" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                {% for post in web_development_posts %}
+                                    <p>{{ post.title }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-target="#recentTheories" href="#recentTheories">
+                                    Recent Theories
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="recentTheories" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                {% for post in whippys_theories_posts %}
+                                    <p>{{ post.title }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
     </div>
 </div>
 

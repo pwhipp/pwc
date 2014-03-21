@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n future staticfiles %}
+{% load pages_tags mezzanine_tags blog_tags i18n future staticfiles %}
 
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -113,8 +113,25 @@
     <div class="row">
 
         <div class="col-md-3 left">
+            {% blog_recent_posts limit=5 category="web-development" as web_development_posts %}
+            {% blog_recent_posts limit=5 category="whippys-theories" as whippys_theories_posts %}
             {% block left_panel %}
-                <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">Recent Web</div>
+                        <div class="panel-body">
+                        {% for post in web_development_posts %}
+                            <p>{{ post.title }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">Recent Theories</div>
+                        <div class="panel-body">
+                        {% for post in whippys_theories_posts %}
+                            <p>{{ post.title }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
             {% endblock %}
         </div>
 

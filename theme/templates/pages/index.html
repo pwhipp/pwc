@@ -1,0 +1,27 @@
+{% extends "pages/richtextpage.html" %}
+
+{% block main %}
+    {{ block.super }}
+{% endblock %}
+
+{% block panel_group_extras %}
+    {{ block.super }}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4 class="panel-title collapser" data-toggle="collapse" data-target="#recentTheories" data-parent="#accordion">
+                Testimomials
+            </h4>
+        </div>
+        <div id="recentTheories" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="rslides">
+                    <li>Testimonial 1</li>
+                    <li>Testimonial 2</li>
+                    <li>Testimonial 3</li>
+                    <li>Testimonial 4</li>
+                    <li>Testimonial 5</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

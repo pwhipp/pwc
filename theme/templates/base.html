@@ -131,7 +131,7 @@
                                     Recent Web
                             </h4>
                         </div>
-                        <div id="recentWeb" class="panel-collapse collapse in">
+                        <div id="recentWeb" class="panel-collapse collapse">
                             <div class="panel-body">
                                 {% for post in web_development_posts %}
                                     <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
@@ -153,6 +153,7 @@
                             </div>
                         </div>
                     </div>
+                    {% block panel_group_extras %}{% endblock %}
                 </div>
             {% endblock %}
         </div>

@@ -34,6 +34,7 @@
                 <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
             {% endif %}
         {% endifinstalled %}
+        <link rel="stylesheet" href="{% static "css/responsiveslides.css" %}">
         {% block extra_css %}{% endblock %}
     {% endcompress %}
 
@@ -45,6 +46,8 @@
         <script src="{% static "js/main.js" %}"></script>
         <script src="{% static "js/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
         <script src="{% static "js/bootstrap-extras.js" %}"></script>
+        <script src="{% static "js/responsiveslides.js" %}"></script>
+        <script src="{% static "js/responsiveslides-init.js" %}"></script>
         {% block extra_js %}{% endblock %}
     {% endcompress %}
     <!--[if lt IE 9]>
@@ -107,6 +110,7 @@
     <div class="row">
 
         <div class="col-md-9 middle">
+            {% block slides %}{% endblock %}
             {% block main %}{% endblock %}
         </div>
 

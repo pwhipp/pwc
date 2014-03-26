@@ -79,7 +79,6 @@ from __future__ import absolute_import, unicode_literals
 # INSTALLED_APPS setting.
 USE_SOUTH = True
 
-
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
@@ -244,6 +243,7 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "myblog",
     "theme",
+    "mezzanine_slides",
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",

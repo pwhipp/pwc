@@ -31,7 +31,7 @@ class JoomlaImporter(object):
         try:
             return model_class.objects.get(**kwargs)
         except model_class.DoesNotExist:
-            return model_class()
+            return model_class(**kwargs)
 
     def import_articles(self, article_rows):
         self.vprint("BEGIN Importing articles", 1)

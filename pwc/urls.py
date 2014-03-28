@@ -16,6 +16,7 @@ urlpatterns = i18n_patterns(
 urlpatterns += patterns(
     '',
     url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+    ("^testimonial", include("testimonials.urls")),
     ("^", include("myblog.urls")),
     ("^", include("mezzanine.urls")))
 

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block main %}
+    {% for testimonial in testimonials %}
+    <div class="testimonial">
+        <h4 class="testimonial_heading">{{ testimonial.title }}</h4>
+
+        <div class="testimonial_content">
+            {{ testimonial.content|safe }}
+        </div>
+        <h5 class="testimonial_author">{{ testimonial.author }}</h5>
+    </div>
+    {% endfor %}
+{% endblock main %}

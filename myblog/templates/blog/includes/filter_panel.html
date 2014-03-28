@@ -1,5 +1,31 @@
-{% load blog_tags keyword_tags i18n future %}
+{% load testimonial_tags blog_tags keyword_tags i18n future %}
 <div class="panel-group" id="accordion">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4 class="panel-title collapser" data-toggle="collapse" data-target="#testimonials" data-parent="#accordion">
+                Testimomials
+            </h4>
+        </div>
+        <div id="testimonials" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="tslides">
+                    {% random_testimonials 5 as random_testimonials %}
+                    {% for testimonial in random_testimonials %}
+                        <li>
+                            <div class="testimonial">
+                                <h4 class="testimonial_heading">{{ testimonial.title }}</h4>
+
+                                <div class="testimonial_content">
+                                    <a href="{% url 'testimonial' testimonial.slug %}">{{ testimonial.content|striptags|truncatechars:100 }}</a>
+                                </div>
+                                <h5 class="testimonial_author">{{ testimonial.author }}</h5>
+                            </div>
+                        </li>
+                    {%  endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="panel panel-info">
         <div class="panel-heading">
             <h4 class="panel-title collapser" data-toggle="collapse" data-target="#recentPosts" data-parent="#accordion">

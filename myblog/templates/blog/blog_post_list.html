@@ -148,13 +148,3 @@
     {% endif %}
 
 {% endblock %}
-
-{% block right_panel %}
-    {% search_form %}
-    <div class="panel panel-default">
-        <div class="panel-body">
-            {% include "accounts/includes/user_panel.html" %}
-        </div>
-    </div>
-    {% include "blog/includes/filter_panel.html" %}
-{% endblock %}

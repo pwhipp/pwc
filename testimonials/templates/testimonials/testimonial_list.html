@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load mezzanine_tags %}
 {% block main %}
-    {% for testimonial in testimonials %}
+    {% for testimonial in testimonials.object_list %}
     <div class="testimonial">
         <h4 class="testimonial_heading">{{ testimonial.title }}</h4>
 
@@ -10,4 +11,6 @@
         <h5 class="testimonial_author">{{ testimonial.author }}</h5>
     </div>
     {% endfor %}
+
+    {% pagination_for testimonials %}
 {% endblock main %}

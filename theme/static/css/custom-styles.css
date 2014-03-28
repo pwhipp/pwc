@@ -41,6 +41,30 @@ h4 {
   font-weight: 300;
 }
 
+.navbar {
+    height: 50px;}
+
+.navbar-brand {
+    height: auto;
+    margin: auto;}
+
+.navbar-nav {
+    height: auto;
+    margin: auto;}
+
+.navbar .nav {
+    margin: auto;
+    background-color: #313131;}
+
+.navbar-nav > li > .dropdown-menu {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: 0px;
+}
+
+.navbar-nav> li > a {
+    padding-bottom: 0px;}
+
 .navbar-inverse .navbar-nav > .active > a {
     background-image: none;
     -webkit-box-shadow: none;

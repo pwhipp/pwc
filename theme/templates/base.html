@@ -126,6 +126,23 @@
             {% blog_recent_posts limit=5 category="whippys-theories" as whippys_theories_posts %}
             {% block right_panel %}
                 {% search_form %}
+                <script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+                <div  class="panel panel-info">
+                    <div class="panel-body">
+                        <div id="SkypeButton_Call_paul_whipp_1">
+                            <script type="text/javascript">
+                                Skype.ui({
+                                    "name": "dropdown",
+                                    "element": "SkypeButton_Call_paul_whipp_1",
+                                    "participants": ["paul_whipp"],
+                                    "imageSize": 32
+                                });
+                            </script>
+                        </div>
+                        <p>Australia: 07 3103 2894</p>
+                        <p>International: +61 410 545 357</p>
+                    </div>
+                </div>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         {% include "accounts/includes/user_panel.html" %}

@@ -1,5 +1,17 @@
 from __future__ import absolute_import, unicode_literals
 
+
+def get_env_var(vname):
+    """
+    Return value of named environment variable. Raises ImproperlyConfigured.
+    """
+    import os
+    from django.core.exceptions import ImproperlyConfigured
+    try:
+        return os.environ[vname]
+    except KeyError:
+        raise ImproperlyConfigured("Set the {0} environment variable".format(vname))
+
 ######################
 # MEZZANINE SETTINGS #
 ######################
@@ -87,7 +99,7 @@ USE_SOUTH = True
 # In the format (('Full Name', 'email@example.com'),
 #                ('Full Name', 'anotheremail@example.com'))
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Paul Whipp', 'paul.whipp@gmail.com'),
 )
 MANAGERS = ADMINS
 
@@ -354,6 +366,13 @@ COMMENTS_USE_RATINGS = False
 HITCOUNT_KEEP_HIT_ACTIVE = {'days': 0}
 HITCOUNT_HITS_PER_IP_LIMIT = 0
 HITCOUNT_EXCLUDE_USER_GROUP = ()
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'paul.whipp@gmail.com'
+EMAIL_HOST_PASSWORD = get_env_var('GMAIL_PASSWORD')
+EMAIL_PORT = 587
 
 ##################
 # LOCAL SETTINGS #

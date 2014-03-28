@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load mezzanine_tags %}
+{% block title %}Testimonials{% endblock title %}
 {% block main %}
+    <a class="btn btn-info" href="{% url 'create_testimonial' %}">Create a Testimonial</a>
     {% for testimonial in testimonials.object_list %}
     <div class="testimonial">
         <h4 class="testimonial_heading">{{ testimonial.title }}</h4>

@@ -377,7 +377,7 @@ EMAIL_PORT = 587
 
 
 GUNICORN_BIND = "127.0.0.1:8100"
-PROCESS_USER = 'pwc'
+PROCESS_USER = 'paul'
 PROCESS_NAME = 'pwc'
 
 ##################

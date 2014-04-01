@@ -202,6 +202,7 @@ import os
 
 # Full filesystem path to the project.
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = PROJECT_ROOT  # For forward compatibility with Django 1.6.2
 
 # Name of the directory for the project.
 PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
@@ -373,6 +374,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'paul.whipp@gmail.com'
 EMAIL_HOST_PASSWORD = get_env_var('GMAIL_PASSWORD')
 EMAIL_PORT = 587
+
+
+GUNICORN_BIND = "127.0.0.1:8000"
+PROCESS_USER = 'pwc'
+PROCESS_NAME = 'pwc'
 
 ##################
 # LOCAL SETTINGS #

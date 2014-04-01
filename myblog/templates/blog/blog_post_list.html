@@ -18,9 +18,9 @@
 
 {% block title %}
     {% if page %}
-        {% editable page.title %}{{ page.title }}{% endeditable %}
-    {% else %}
-        {% trans "Blog" %}
+        {% if page.title != "Blog" %}
+            {% editable page.title %}{{ page.title }}{% endeditable %}
+        {% endif %}
     {% endif %}
 {% endblock %}
 

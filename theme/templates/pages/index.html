@@ -1,10 +1,27 @@
 {% extends "pages/richtextpage.html" %}
+{% load mezzanine_tags myblog_tags %}
 {% block title %}{% endblock title %}
 {% block breadcrumb %}{% endblock breadcrumb %}
 {% block main %}
     {{ block.super }}
-{% endblock %}
+    {% find_blog_posts "Why You Need Agile Development" "Why you need a beautiful site" "Why you need to own your code" as posts %}
+    {% for post in posts %}
+        {% editable blog_post.title %}
+            <h2>
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </h2>
+        {% endeditable %}
+        {% if settings.BLOG_USE_FEATURED_IMAGE and post.featured_image %}
+            <a href="{{ post.get_absolute_url }}">
+                <img class="img-thumbnail pull-left"
+                     src="{{ MEDIA_URL }}{% thumbnail post.featured_image 90 90 %}">
+            </a>
+        {% endif %}
 
-{% block panel_group_extras %}
-    {{ block.super }}
+
+        {% editable post.content %}
+            {{ post.description_from_content|safe }}
+        {% endeditable %}
+        <p></p><a href="{{ post.get_absolute_url }}">read more</a></p>
+    {% endfor %}
 {% endblock %}

@@ -2,3 +2,5 @@
 invoicing
 .idea/
 __pycache__/
+*.py[cod]
+gunicorn_logs/

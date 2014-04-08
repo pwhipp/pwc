@@ -1,6 +1,6 @@
 server {
     listen       80;
-    server_name  pwcdev8.info www.pwcdev8.info;
+    server_name  paulwhippconsulting.com www.paulwhippconsulting.com paulwhippconsulting.com.au www.paulwhippconsulting.com.au;
     access_log   /var/log/nginx/pwc.access.log;
     error_log    /var/log/nginx/pwc.error.log;
     root /home/paul/pwc/;
@@ -8,6 +8,16 @@ server {
     location  /static/ {
         alias  /home/paul/pwc/pwc/static_collected/;
     }
+
+
+    location /atwell/ {
+        alias /home/paul/atwell/;
+	auth_basic "Please log in";
+	auth_basic_user_file /home/paul/atwell/htpasswd;
+	try_files $uri /index.php =404;
+	fastcgi_split_path_info ^(.+\.php)(/.+)$;
+	fastcgi_pass unix:/var/run/php5-fpm.sock;
+	include fastcgi_params;}
 
     location  / {
         proxy_pass            http://127.0.0.1:8100;

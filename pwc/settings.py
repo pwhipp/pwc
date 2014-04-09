@@ -382,19 +382,8 @@ GUNICORN_BIND = "127.0.0.1:8100"
 PROCESS_USER = 'paul'
 PROCESS_NAME = 'pwc'
 
-TINYMCE_DEFAULT_CONFIG = {'theme': "simple",
-                          'relative_urls': False,
-                          'content_css': ','.join([os.path.join(STATIC_URL, path) for path in [
-                              "css/animate.css",
-                              "css/bootstrap.min.css",
-                              "css/font-awesome.min.css",
-                              "css/jquery.bxslider.css",
-                              "css/main.css",
-                              "css/mezzanine.css",
-                              "css/bootstrap-theme.css",
-                              "css/custom-styles.css"]]),
-                          'theme_advanced_font_sizes': "10px,12px,13px,14px,16px,18px,20px",
-                          'font_size_style_values': "10px,12px,13px,14px,16px,18px,20px"}
+TINYMCE_SETUP_JS = os.path.join(STATIC_URL, "js/tinymce_setup.js")
+
 ##################
 # LOCAL SETTINGS #
 ##################

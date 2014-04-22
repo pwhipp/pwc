@@ -9,11 +9,11 @@ server {
         alias  /home/paul/pwc/pwc/static_collected/;
     }
 
-    location  favicon.ico {
+    location  = /favicon.ico {
         alias  /home/paul/pwc/pwc/static_collected/media/favicon.ico;
     }
 
-    location  robots.txt {
+    location  = /robots.txt {
         alias  /home/paul/pwc/pwc/static_collected/media/robots.txt;
     }
 

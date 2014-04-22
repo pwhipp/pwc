@@ -1,9 +1,16 @@
 {% extends "pages/richtextpage.html" %}
-{% load mezzanine_tags myblog_tags %}
+{% load staticfiles mezzanine_tags myblog_tags %}
 {% block title %}{% endblock title %}
 {% block breadcrumb %}{% endblock breadcrumb %}
 {% block main %}
+
+    <div class="row">
+            <object type="image/svg+xml" data="{% static "media/uploads/slides/home_page/tag_cloud.svg" %}">
+                <h2>We build cloud applications</h2>
+            </object>
+    </div>
     {{ block.super }}
+
     {% find_blog_posts "Why You Need Agile Development" "Why you need a beautiful site" "Why you need to own your code" as posts %}
     {% for post in posts %}
         {% editable blog_post.title %}
@@ -24,4 +31,8 @@
         {% endeditable %}
         <p></p><a href="{{ post.get_absolute_url }}">read more</a></p>
     {% endfor %}
+    <br>
+    <div class="row">
+            <img src="{% static "media/uploads/slides/home_page/logo_backdrop.png" %}" alt="Applications and frameworks we use"/>
+    </div>
 {% endblock %}

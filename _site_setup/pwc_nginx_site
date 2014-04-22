@@ -9,6 +9,14 @@ server {
         alias  /home/paul/pwc/pwc/static_collected/;
     }
 
+    location  favicon.ico {
+        alias  /home/paul/pwc/pwc/static_collected/media/favicon.ico;
+    }
+
+    location  robots.txt {
+        alias  /home/paul/pwc/pwc/static_collected/media/robots.txt;
+    }
+
     location /atwell/ {
         alias /home/paul/atwell/;
 	auth_basic "Please log in";
@@ -18,7 +26,7 @@ server {
 	    fastcgi_split_path_info ^(.+\.php)(/.+)$;
 	    fastcgi_pass unix:/var/run/php5-fpm.sock;
 	    include fastcgi_params;}}
-	
+
     location  / {
         proxy_pass            http://127.0.0.1:8100;
         proxy_redirect        off;

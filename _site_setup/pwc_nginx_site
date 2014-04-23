@@ -1,6 +1,12 @@
 server {
     listen       80;
-    server_name  paulwhippconsulting.com www.paulwhippconsulting.com paulwhippconsulting.com.au www.paulwhippconsulting.com.au;
+    server_name  paulwhippconsulting.com.au www.paulwhippconsulting.com.au;
+    rewrite ^ http://paulwhippconsulting.com$request_uri? permanent;
+}
+
+server {
+    listen       80;
+    server_name  paulwhippconsulting.com www.paulwhippconsulting.com;
     access_log   /var/log/nginx/pwc.access.log;
     error_log    /var/log/nginx/pwc.error.log;
     root /home/paul/pwc/;

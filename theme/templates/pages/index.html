@@ -14,7 +14,7 @@
     </div>
     {{ block.super }}
 
-    {% find_blog_posts "Why You Need Agile Development" "Why you need a beautiful site" "Why you need to own your code" as posts %}
+    {% find_blog_posts "Why you need a beautiful site" "Why you need to own your code"  "Why You Need Agile Development" as posts %}
     {% for post in posts %}
         {% editable blog_post.title %}
             <h2>

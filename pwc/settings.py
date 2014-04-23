@@ -105,9 +105,7 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['dev:8000',
-                 '',
-                 '.paulwhippconsulting.com',
+ALLOWED_HOSTS = ['.paulwhippconsulting.com',
                  '.paulwhippconsulting.com.',
                  '.paulwhippconsulting.com.au',
                  '.paulwhippconsulting.com.au.']

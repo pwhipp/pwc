@@ -27,8 +27,12 @@ h2 {
   font-weight: 300;
 }
 
-h2.scrollto {
-    padding-top: 100px;}
+a.anchor {
+    display: block;
+    position: relative;
+    top: 100px;
+    visibility: hidden;
+}
 
 h3 {
   font-size: 26px;

@@ -1,6 +1,6 @@
 .project
 /invoicing/
-.idea/
+/.idea/
 __pycache__/*
 *.py[cod]
-gunicorn_logs/
+/gunicorn_logs/

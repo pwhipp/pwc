@@ -1,5 +1,5 @@
 .project
-/invoicing/
+/invoicing
 /.idea/
 __pycache__/*
 *.py[cod]

@@ -32,5 +32,4 @@ def find_blog_posts(*title_parts):
     Used to obtain a list of specific blog entries in a template e.g.
     {% find_blog_posts ["Why You Need Agile Development", "Why you need a beautiful site"] %}
     """
-    print(title_parts)
     return [_find_blog_post(title_part) for title_part in title_parts]

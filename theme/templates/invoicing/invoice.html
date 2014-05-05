@@ -22,12 +22,12 @@ This has to work when opened on a local user's machine, hence the use of base_ur
     </h1>
 </div>
 <div class="col-xs-6 text-right">
-    <h1 style="color: black;">{% if invoice.total_gross > 0 %}TAX INVOICE{% else %}CREDIT NOTE{% endif %}</h1>
+    <p><strong>{% if invoice.total_gross > 0 %}TAX INVOICE{% else %}CREDIT NOTE{% endif %}</strong></p>
 
-    <h2>
-        <small>Invoice Number: {{ invoice.pk|stringformat:"05d" }}<br>
-            {{ invoice.date|date:"d M Y" }}</small>
-    </h2>
+    <p>
+        Invoice Number: {{ invoice.pk|stringformat:"05d" }}<br>
+        {{ invoice.date|date:"d M Y" }}
+    </p>
 </div>
 <hr>
 <div class="clearfix"></div>

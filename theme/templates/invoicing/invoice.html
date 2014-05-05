@@ -6,14 +6,14 @@ This has to work when opened on a local user's machine, hence the use of base_ur
 <html>
 <head>
     <title>'Invoice {{ invoice.pk|stringformat:"05d" }} from PWC'</title>
-    <link rel="stylesheet" href="{% static "css/animate.css" %}">
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "css/custom-styles.css" %}">
-    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
-    <link rel="stylesheet" href="{% static "css/main.css" %}">
-    <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-    <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
-    <link rel="stylesheet" href="{% static "css/print.css" %}">
+    <link rel="stylesheet" href="{{ base_uri }}{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="{{ base_uri }}{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{{ base_uri }}{% static "css/custom-styles.css" %}">
+    <link rel="stylesheet" href="{{ base_uri }}{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{{ base_uri }}{% static "css/main.css" %}">
+    <link rel="stylesheet" href="{{ base_uri }}{% static "css/mezzanine.css" %}">
+    <link rel="stylesheet" href="{{ base_uri }}{% static "css/bootstrap-theme.css" %}">
+    <link rel="stylesheet" href="{{ base_uri }}{% static "css/print.css" %}">
 </head>
 <body>
 <div class="col-xs-6">

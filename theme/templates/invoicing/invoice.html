@@ -1,0 +1,156 @@
+{% load staticfiles %}
+{%  comment %}
+This has to work when opened on a local user's machine, hence the use of base_url with statics.
+{% endcomment %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>'Invoice {{ invoice.pk|stringformat:"05d" }} from PWC'</title>
+    <link rel="stylesheet" href="{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/custom-styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+    <link rel="stylesheet" href="{% static "css/print.css" %}">
+</head>
+<body>
+<div class="col-xs-6">
+    <h1>
+        <img src="{{ base_uri }}{% static "img/logo.gif" %}">
+    </h1>
+</div>
+<div class="col-xs-6 text-right">
+    <h1>{% if invoice.total_gross > 0 %}TAX INVOICE{% else %}CREDIT NOTE{% endif %}</h1>
+
+    <h2>
+        <small>Invoice Number: {{ invoice.pk|stringformat:"05d" }}<br>
+            {{ invoice.date|date:"d M Y" }}</small>
+    </h2>
+</div>
+<hr>
+<div class="clearfix"></div>
+<div style="margin-left: 15px; margin-right:15px;" class="row">
+    <div class="pull-left">
+        <div style="margin-right: 15px;" class="panel panel-default">
+            <div class="panel-heading">
+                <h4>From: Paul Whipp Consulting</h4>
+            </div>
+            <div class="panel-body">
+                <p>
+                    PO Box 495<br>
+                    Samford<br>
+                    QLD 4520<br>
+                    Australia<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="pull-left">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>To : {{ invoice.contact_name }}</h4>
+            </div>
+            <div class="panel-body">
+                <p>
+                    {% if invoice.company_name %}{{ invoice.company_name }}<br>{% endif %}
+                    {% if invoice.address_1 %}{{ invoice.address_1 }}<br>{% endif %}
+                    {% if invoice.address_2 %}{{ invoice.address_2 }}<br>{% endif %}
+                    {% if invoice.address_3 %}{{ invoice.address_3 }}<br>{% endif %}
+                    {% if invoice.city %}{{ invoice.city }}<br>{% endif %}
+                    {% if invoice.state %}{{ invoice.state }}{% if invoice.postcode %},
+                    {% endif %}{% endif %}
+                    {% if invoice.postcode %}{{ invoice.postcode }}<br>{% else %}<br>{% endif %}
+                    {% if invoice.country %}{{ invoice.country }}<br>{% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / end client details section -->
+<div class="text-right">
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th><h4>Description</h4></th>
+            <th class="text-right"><h4>Unit Price</h4></th>
+            <th class="text-right"><h4>Quantity</h4></th>
+            <th class="text-right"><h4>Net Price</h4></th>
+            <th class="text-right"><h4>GST @ {{ tax_rate }}</h4></th>
+            <th class="text-right"><h4>Total</h4></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for line_item in invoice.invoicelineitem_set.all %}
+            <tr>
+                <td class="text-left">{{ line_item.description }}</td>
+                <td>${{ line_item.price_per_item|floatformat:2 }}</td>
+                <td>{{ line_item.quantity }}</td>
+                <td>${{ line_item.net|floatformat:2 }}</td>
+                <td>${{ line_item.tax|floatformat:2 }}</td>
+                <td>${{ line_item.gross|floatformat:2 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3"><strong>Total:</strong></td>
+            <td><strong>${{ invoice.total_net }}</strong></td>
+            <td><strong>${{ invoice.total_tax }}</strong></td>
+            <td><strong>${{ invoice.total_gross }}</strong></td>
+        </tr>
+
+        </tfoot>
+    </table>
+</div>
+<div style="margin-left: 15px; margin-right:15px;" class="row">
+    <div style="margin-right: 15px;" class="panel panel-default pull-left">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td class="text-right">Account Name:</td>
+                        <td>Paul Whipp Consulting</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Bank Name:</td>
+                        <td>Westpac</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">BSB:</td>
+                        <td>034-083</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Account Number:</td>
+                        <td>213022</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">SWIFT:</td>
+                        <td>WPACAU2S</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">IBAN:</td>
+                        <td>034083213022</td>
+                    </tr>
+                    </tbody>
+                </table>
+    </div>
+<div>
+    {% if invoice.notes %}<p>{{ invoice.notes }}</p>{% endif %}
+    <p>Payment is due within seven business days of the Invoice date.</p>
+
+    <p>Please make payment by bank transfer using the invoice number as the payment reference.</p>
+
+    <p>If there are any issues with this invoice or its payment, please call 0410 545 357 or email
+        paul.whipp@gmail.com.</p>
+
+
+</div>
+</div>
+   <p class="text-center">
+        <small>Paul Whipp Consulting (BN 207 530 56) is a business owned by
+            and operated for The Whipp Family Trust (ABN 32 507 522 641).
+        </small>
+    </p>
+</body>
+</html>

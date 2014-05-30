@@ -109,6 +109,9 @@
                         {{ month.date|date:"F" }}
                     </a> ({{ month.post_count }})
                     </p>
+                    {% ifchanged month.date.year %}
+                        </ul>
+                    {% endifchanged %}
                 {% endfor %}
             </div>
         </div>

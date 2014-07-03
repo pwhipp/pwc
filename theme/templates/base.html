@@ -61,7 +61,7 @@
 <script src="{% static "js/html5shiv.js" %}"></script>
 <script src="{% static "js/respond.min.js" %}"></script>
 <![endif]-->
-
+<meta name="google-translate-customization" content="814127c659e2003c-afe840eb74ef7c41-g88f9afb68fc1944e-17"></meta>
     {% block extra_head %}{% endblock %}
 </head>
 
@@ -122,11 +122,20 @@
         </div>
 
         <div class="col-md-3 right">
-            {% blog_recent_posts limit=5 category="web-development" as web_development_posts %}
-            {% blog_recent_posts limit=5 category="whippys-theories" as whippys_theories_posts %}
             {% block right_panel %}
                 {% search_form %}
-                <script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'cy,de,en,eo,fr,id,it,ja,ko,ru,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        <script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+                    </div>
+                </div>
                 <div  class="panel panel-info">
                     <div class="panel-body">
                         <div id="SkypeButton_Call_paul_whipp_1">

@@ -1,5 +1,9 @@
+from django import template as dt
 from mezzanine import template
 from mezzanine.blog.models import BlogPost
+from django.contrib.contenttypes.models import ContentType
+
+from hitcount.models import HitCount
 
 register = template.Library()
 
@@ -14,6 +18,7 @@ def _find_blog_post(title_part):
         return BlogPost.objects.filter(title__icontains=title_part)[0]
     except IndexError:  # nothing matched
         return None
+
 
 @register.as_tag
 def find_blog_post(title_part):
@@ -33,3 +38,41 @@ def find_blog_posts(*title_parts):
     {% find_blog_posts ["Why You Need Agile Development", "Why you need a beautiful site"] %}
     """
     return [_find_blog_post(title_part) for title_part in title_parts]
+
+
+class HitNode(dt.Node):
+    def __init__(self, blog_post_vname, var_name=None):
+        self.blog_post_var = dt.Variable(blog_post_vname)
+        self.var_name = var_name
+
+    def render(self, context):
+        try:
+            blog_post = self.blog_post_var.resolve(context)
+        except dt.VariableDoesNotExist:
+            return ''
+
+        #context[self.var_name] = 'hits for {0}'.format(self.blog_post.id)
+
+        hits = self.get_hits(blog_post)
+        return hits
+
+    @staticmethod
+    def get_hits(blog_post):
+        try:
+            content_type = ContentType.objects.get_for_model(blog_post)
+            hitcount = HitCount.objects.get(content_type=content_type,
+                                            object_pk=blog_post.pk)
+            return hitcount.hits
+        except HitCount.DoesNotExist:
+            return 0
+
+
+def blog_post_hits(parser, token):
+    try:
+        # split_contents() knows not to split quoted strings.
+        tag_name, blog_post_vname = token.split_contents()
+    except ValueError:
+        raise dt.TemplateSyntaxError("%r tag requires a single argument" % token.contents.split()[0])
+    return HitNode(blog_post_vname)
+
+register.tag('blog_post_hits', blog_post_hits)

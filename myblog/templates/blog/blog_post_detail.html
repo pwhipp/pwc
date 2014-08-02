@@ -62,8 +62,10 @@
                     {% endspaceless %}</a>)
                     {% endif %}
                 {% endif %}
-                {% blog_post_hits blog_post %}
-                ({{ hits }} hits)
+                {% blog_post_hits blog_post as hits %}
+                {% if hits > 100 %}
+                    ({{ hits }} hits)
+                {% endif %}
             </h6>
         {% endeditable %}
     {% endblock %}

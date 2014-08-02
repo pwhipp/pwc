@@ -1,3 +1,5 @@
+import re
+
 from django import template as dt
 from mezzanine import template
 from mezzanine.blog.models import BlogPost
@@ -51,10 +53,9 @@ class HitNode(dt.Node):
         except dt.VariableDoesNotExist:
             return ''
 
-        #context[self.var_name] = 'hits for {0}'.format(self.blog_post.id)
+        context[self.var_name] = self.get_hits(blog_post)
 
-        hits = self.get_hits(blog_post)
-        return hits
+        return ''
 
     @staticmethod
     def get_hits(blog_post):
@@ -70,9 +71,13 @@ class HitNode(dt.Node):
 def blog_post_hits(parser, token):
     try:
         # split_contents() knows not to split quoted strings.
-        tag_name, blog_post_vname = token.split_contents()
+        tag_name, args = token.contents.split(None, 1)
     except ValueError:
-        raise dt.TemplateSyntaxError("%r tag requires a single argument" % token.contents.split()[0])
-    return HitNode(blog_post_vname)
+        raise dt.TemplateSyntaxError("{0} tag requires arguments".format(token.contents.split()[0]))
+    m = re.search('(\w+) as (\w+)', args)
+    if not m:
+        raise dt.TemplateSyntaxError("{0} tag has invalid arguments".format(token.contents.split()[0]))
+    blog_post_vname, var_name = m.groups()
+    return HitNode(blog_post_vname, var_name)
 
 register.tag('blog_post_hits', blog_post_hits)

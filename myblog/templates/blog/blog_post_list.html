@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags %}
+{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags myblog_tags %}
 
 {% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "Blog" %}
 {% endif %}{% endblock %}
@@ -90,6 +90,10 @@
                         {% endif %}
                     {% endwith %}
                     {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
+                    {% blog_post_hits blog_post as hits %}
+                    {% if hits > 100 %}
+                        ({{ hits }} hits)
+                    {% endif %}
                 </h6>
             {% endeditable %}
         {% endblock %}

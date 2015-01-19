@@ -108,7 +108,11 @@ MANAGERS = ADMINS
 ALLOWED_HOSTS = ['.paulwhippconsulting.com',
                  '.paulwhippconsulting.com.',
                  '.paulwhippconsulting.com.au',
-                 '.paulwhippconsulting.com.au.']
+                 '.paulwhippconsulting.com.au.',
+                 '.samfordwebsites.com',
+                 '.samfordwebsites.com.',
+                 '.samfordwebsites.com.au',
+                 '.samfordwebsites.com.au.']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

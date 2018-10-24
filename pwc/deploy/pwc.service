@@ -1,0 +1,12 @@
+[Unit]
+Description=Job that launches the script controlling the pwc web service
+
+[Service]
+Type=simple
+Restart=on-failure
+Group=paul
+User=paul
+ExecStart=/home/paul/pwc/deploy/service_demon.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -7,7 +7,7 @@ Type=simple
 Restart=on-failure
 Group=paul
 User=paul
-ExecStart=/home/paul/pwc/deploy/service_demon.sh
+ExecStart=/home/paul/pwc/pwc/deploy/service_demon.sh
 
 [Install]
 WantedBy=multi-user.target
